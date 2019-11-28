@@ -1,6 +1,7 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Header from './components/Header'
 import Formulario from './components/Formulario'
+import ListaEventos from './components/ListaEventos'
 
 import CategoriasProvider from './context/CategoriasContext'
 import EventosProvider from './context/Eventoscontext'
@@ -12,6 +13,7 @@ function App() {
 
           <div className="uk-container">
               <Formulario />
+              <ListaEventos />
           </div>
 
       </CategoriasProvider>
