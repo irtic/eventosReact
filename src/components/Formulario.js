@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { CategoriasConsumer } from '../context/CategoriasContext'
+
+import { Eventosconsumer } from '../context/Eventoscontext'
 class Formulario extends Component {
 
     state = {
@@ -17,7 +19,18 @@ class Formulario extends Component {
 
     render() {
         return (
-            <form>
+            <Eventosconsumer>
+            {
+                (value) => {
+                        
+                        return(
+                    
+                <form
+                    onSubmit={e =>{
+                        e.preventDefault();
+                        value.obtenerEventos(this.state)
+                    }}>
+            
                 <fieldset className="uk-fieldset uk-margin">
                     <legend className="uk-legend uk-text-center">
                         Busca tu evento por Nombre o categoría
@@ -32,7 +45,7 @@ class Formulario extends Component {
                             className = "uk-input"
                             type = "text"
                             placeholder = "Nombre de Evento o ciudad"
-                            onchange = {this.obtenerdatosEvento}
+                            onChange = {this.obtenerdatosEvento}
                         />
                     </div>
 
@@ -40,7 +53,7 @@ class Formulario extends Component {
                         <select
                             className="uk-select"
                             name ="categoria"
-                            onchange = {this.obtenerdatosEvento}
+                            onChange = {this.obtenerdatosEvento}
                         >
                             <option value=""> -- seleccione categoría --</option>
                             <CategoriasConsumer>
@@ -69,6 +82,10 @@ class Formulario extends Component {
 
                 </div>
             </form>
+                )}
+            }
+           </Eventosconsumer>
+
         );
     }
 }
